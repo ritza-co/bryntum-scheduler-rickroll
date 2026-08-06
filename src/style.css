@@ -1,0 +1,184 @@
+@import "@bryntum/scheduler/fontawesome/css/fontawesome.css";
+@import "@bryntum/scheduler/fontawesome/css/solid.css";
+@import "@bryntum/scheduler/scheduler.css";
+@import "@bryntum/scheduler/svalbard-light.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+body,
+html {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    box-sizing  : border-box;
+    display     : flex;
+    height      : 100%;
+    margin      : 0;
+    overflow    : hidden;
+}
+
+body {
+    flex            : 1;
+    min-inline-size : 0;
+}
+
+.b-video-pixels {
+    flex            : 1;
+    margin          : 0;
+    min-block-size  : 0;
+    min-inline-size : 0;
+
+    border        : 0;
+    border-radius : 0;
+
+    background     : var(--b-color-black);
+    box-shadow     : none;
+    container-type : inline-size;
+
+    .b-toolbar {
+        border-block-end : 1px solid var(--b-border-6);
+        min-height       : 4em;
+
+        --b-toolbar-background : var(--b-panel-background);
+    }
+
+    .b-video-source-label {
+        min-width     : 0;
+        overflow      : hidden;
+        text-overflow : ellipsis;
+        white-space   : nowrap;
+
+        color : var(--b-text-2);
+
+        &.b-load-error {
+            color : var(--b-color-red);
+        }
+    }
+
+    .b-grid-header-container {
+        border-block-end : 1px solid var(--b-color-black);
+    }
+
+    .b-sch-header-timeaxis-cell {
+        letter-spacing : .04em;
+        text-transform : uppercase;
+
+        background : var(--b-panel-background);
+        color      : var(--b-text-2);
+        font-size  : .8em;
+    }
+
+    .b-grid-body-container,
+    .b-grid-row,
+    .b-grid-cell {
+        border : 0;
+
+        background : var(--b-color-black);
+    }
+
+    .b-grid-row {
+        transition : none;
+    }
+
+    .b-grid-sub-grid-locked .b-grid-cell {
+        border-block-end : 1px solid var(--b-border-6);
+
+        background : var(--b-panel-background);
+        color      : var(--b-text-1);
+        font-size  : .75em;
+    }
+
+    .b-sch-event-wrap {
+        inline-size    : 100%;
+        max-height     : none;
+        padding        : 0;
+        pointer-events : none;
+        transition     : none;
+    }
+
+    .b-video-region {
+        position           : absolute;
+        inset-block        : 0;
+        min-inline-size    : 0;
+
+        border        : 1px solid color-mix(in srgb, var(--b-color-black), var(--b-color-light-gray) 18%);
+        border-radius : 0;
+        box-shadow    : none;
+        min-width     : 0;
+        transition    : none;
+
+        --b-sch-event-width-reduction : 0;
+    }
+
+    .b-video-region-hidden {
+        display : none;
+    }
+
+    .b-sch-event-content {
+        justify-content : flex-start;
+        padding-inline  : 2px;
+        text-align      : start;
+        visibility      : hidden;
+
+        font-family    : monospace;
+        font-size      : .6em;
+        font-weight    : 700;
+        letter-spacing : -.02em;
+        line-height    : 1;
+        text-shadow    : 0 1px rgb(0 0 0 / 20%);
+    }
+
+    .b-video-region-labelled .b-sch-event-content {
+        visibility : visible;
+    }
+
+    &.b-video-labels-hidden .b-sch-event-content {
+        visibility : hidden;
+    }
+
+    &.b-video-splash {
+        /* Hairlines flanking each run would break up the flat logo artwork */
+        .b-video-region {
+            block-size : calc(100% + 1px);
+            border     : 0;
+        }
+
+        .b-video-splash-logo .b-sch-event-content {
+            text-shadow : none;
+        }
+    }
+
+    &.b-video-paused .b-video-region:not(.b-video-region-hidden) {
+        cursor         : pointer;
+        pointer-events : auto;
+
+        &:hover {
+            outline        : 2px solid var(--b-color-orange);
+            outline-offset : -2px;
+        }
+    }
+
+    @container (max-width: 48em) {
+        .b-video-source-label {
+            position    : absolute;
+            inline-size : 1px;
+            block-size  : 1px;
+            overflow    : hidden;
+            clip-path   : inset(50%);
+            white-space : nowrap;
+        }
+    }
+}
+
+.b-video-event-tooltip .b-video-tooltip-content {
+    display : grid;
+    gap     : .25em;
+
+    span {
+        color     : var(--b-text-2);
+        font-size : .85em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .b-video-pixels * {
+        transition : none;
+    }
+}
