@@ -762,6 +762,8 @@ const scheduler = new Scheduler({
     },
     features : {
         columnLines     : false,
+        // The Enterprise tier enables dependencies by default, which shows drag terminals on hovered events
+        dependencies    : false,
         eventCopyPaste  : false,
         eventDrag       : false,
         eventDragCreate : false,
@@ -783,7 +785,9 @@ const scheduler = new Scheduler({
         regionResize    : true,
         scheduleMenu    : false,
         scheduleTooltip : false,
-        stickyEvents    : false
+        stickyEvents    : false,
+        // The Enterprise tier edits events with the task editor, which is on by default
+        taskEdit        : false
     },
     eventRenderer({ eventRecord, renderData }) {
         renderData.cls['b-video-region'] = 1;
