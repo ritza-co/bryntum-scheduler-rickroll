@@ -1,4 +1,5 @@
-import { DateHelper, EventModel, Scheduler, StringHelper } from '@bryntum/scheduler';
+import { DateHelper, StringHelper } from '@bryntum/core-enterprise';
+import { EventModel, Scheduler } from '@bryntum/scheduler-enterprise';
 import './style.css';
 
 class VideoEventModel extends EventModel {
